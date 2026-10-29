@@ -13,12 +13,12 @@ def page(name, title, desc, body):
 <meta name="description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=3">
 </head>
 <body data-page="{name}">
 {body}
-<script src="config.js"></script>
-<script src="site.js"></script>
+<script src="config.js?v=3"></script>
+<script src="site.js?v=3"></script>
 </body>
 </html>
 """
