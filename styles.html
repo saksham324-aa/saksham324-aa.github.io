@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Styles · Saksham Pandey</title>
+<meta name="description" content="Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-page="styles">
+
+<section class="wrap pagehead">
+  <div class="sh reveal" style="padding-top:0">
+    <div class="mono">Style library</div>
+    <h1 class="disp">Six ways to tell<br>the same <span class="red">story</span>.</h1>
+    <p>Same raw footage, a different feel. Scroll to turn the library, or read each style below. Every style can be recoloured to your brand.</p>
+  </div>
+</section>
+
+<section id="carousel">
+  <div class="stick">
+    <div class="glow" id="cglow" style="width:800px;height:800px;right:5%;top:10%;opacity:.25;background:#2D4CF5;transition:background .6s"></div>
+    <div class="cinfo">
+      <div class="count mono"><b id="cnum">01</b> / 06 · Style library · scroll to turn</div>
+      <div class="swap" id="cswap">
+        <h3 class="disp" id="ctitle"></h3>
+        <div class="for mono" id="cfor"></div>
+        <p id="cdesc"></p>
+        <ul id="clist"></ul>
+      </div>
+      <button class="watch mono" id="cwatch">▶ Watch with sound</button>
+    </div>
+    <div class="stage"><div class="floor"></div><div class="cyl" id="cyl"></div></div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+<section class="wrap" id="rows"></section>
+
+<section class="end" id="cta">
+  <div class="glow" style="width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--rec);opacity:.2"></div>
+  <div class="mono reveal" style="font-size:14px;color:var(--hi);margin-bottom:20px">Up next · your video</div>
+  <h2 class="disp reveal">Let's make it<br><span class="red">move</span>.</h2>
+  <div class="pill reveal">
+    <span class="badge" data-initials></span>
+    <div class="t"><b data-name></b><span data-email></span></div>
+    <a class="btn" data-book>Book an edit
+      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+  </div>
+  <a class="mono reveal" href="contact.html" style="margin-top:34px;font-size:12px;color:var(--dim)">All contact details →</a>
+</section>
+<script src="config.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
