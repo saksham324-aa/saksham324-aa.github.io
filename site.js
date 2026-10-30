@@ -1,23 +1,20 @@
-/* Shared by every page: contact links, video playback, the player, the pinned "one line, three edits". */
+/* The one page: contact links, video playback, the player, the pinned "one line, three edits". */
 const C = window.CONTACT || {};
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* every Book button: the Google Form when set, otherwise an email (on Contact) or the Contact page */
+/* every Book button: the Google Form when set, otherwise the end of the page */
 const mail = `mailto:${C.email}?subject=Video%20edit%20enquiry`;
-$$('[data-book]').forEach(a => {
-  if (C.form) { a.href = C.form; a.target = '_blank'; a.rel = 'noopener'; }
-  else if (document.body.dataset.page === 'contact') a.href = mail;
-});
+if (C.form) $$('[data-book]').forEach(a => { a.href = C.form; a.target = '_blank'; a.rel = 'noopener'; });
 
-/* contact page: only what is filled in config.js shows */
+/* only what is filled in config.js shows */
 const ways = $('#ways');
 if (ways) {
   const phone = (C.phone || '').replace(/[^\d+]/g, '');
   const wa = (C.whatsapp || '').replace(/\D/g, '');
   const text = encodeURIComponent(`Hi ${C.name}, I saw your portfolio and want to talk about an edit.`);
   const items = [
-    ['Book a call', C.form || mail, 'btn btn-light'],
+    ['Book a call', C.form || mail, 'btn'],
     wa && ['WhatsApp', `https://wa.me/${wa}?text=${text}`],
     phone && [C.phone, `tel:${phone}`],
     C.instagram && ['Instagram', C.instagram],
@@ -31,47 +28,26 @@ const seen = new IntersectionObserver(es => es.forEach(e => {
   const v = e.target;
   if (e.isIntersecting && !calm) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
 }), { threshold: .1 });
-$$('video[loop]').forEach(v => { if (!v.closest('.work-held')) seen.observe(v); });
+$$('video[loop]').forEach(v => seen.observe(v));
 
-/* entrances: once, parts arrive in order */
+/* entrances: once */
 const up = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); up.unobserve(e.target); }
 }), { threshold: .15 });
 $$('.rise').forEach(el => up.observe(el));
 
 /* player: the clip with sound */
-const dlg = $('#player'), pv = dlg && $('video', dlg);
+const dlg = $('#player'), pv = $('video', dlg);
 $$('[data-play]').forEach(b => b.addEventListener('click', () => {
   pv.src = `media/${b.dataset.play}-full.mp4`;
   dlg.setAttribute('aria-label', `${b.dataset.title} with sound`);
   dlg.showModal();
   pv.play().catch(() => {});
 }));
-if (dlg) {
-  dlg.addEventListener('close', () => { pv.pause(); pv.removeAttribute('src'); pv.load(); });
-  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-}
+dlg.addEventListener('close', () => { pv.pause(); pv.removeAttribute('src'); pv.load(); });
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 
-/* work page: the held frame shows whichever title is passing it */
-const held = $$('.work-held video'), rows = $$('.work-row');
-if (held.length) {
-  let cur = '';
-  const show = k => {
-    if (k === cur) return; cur = k;
-    held.forEach(v => { const on = v.dataset.k === k; v.classList.toggle('on', on); if (on) { v.preload = 'auto'; if (!calm) v.play().catch(() => {}); } else v.pause(); });
-    rows.forEach(r => r.classList.toggle('on', r.dataset.k === k));
-  };
-  show(rows[0].dataset.k);
-  const pick = () => {
-    const mid = innerHeight * .55; let best = rows[0], d = 1e9;
-    rows.forEach(r => { const b = r.getBoundingClientRect(), c = Math.abs((b.top + b.bottom) / 2 - mid); if (c < d) { d = c; best = r; } });
-    show(best.dataset.k);
-  };
-  addEventListener('scroll', pick, { passive: true });
-  rows.forEach(r => { r.addEventListener('pointerenter', () => show(r.dataset.k)); r.addEventListener('focus', () => show(r.dataset.k)); });
-}
-
-/* home: the same line, three edits. Scrolling or tapping changes the edit at the same second. */
+/* the same line, three edits: scrolling or tapping changes the edit at the same second */
 const same = $('#same');
 if (same) {
   const NOTES = {
@@ -108,7 +84,7 @@ if (same) {
   }));
   new IntersectionObserver(([e]) => {
     visible = e.isIntersecting;
-    if (visible && !calm) { vids.forEach(v => v.preload = 'auto'); cur().play().catch(() => {}); } else { cur().pause(); }
+    if (visible && !calm) { vids.forEach(v => v.preload = 'auto'); cur().play().catch(() => {}); } else cur().pause();
   }, { threshold: .2 }).observe(same);
   if (!calm) addEventListener('scroll', () => {
     const r = same.getBoundingClientRect(), run = r.height - innerHeight;
