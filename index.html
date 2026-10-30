@@ -5,119 +5,101 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Saksham Pandey, video editor</title>
 <meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
-<link rel="preload" href="fonts/BebasNeue-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="site.css?v=24">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v=32">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
   <a class="mark" href="#hook">Saksham Pandey</a>
-  <nav aria-label="Main"><a href="#info">About</a><a href="#videos">Videos</a><a href="#end">Contact</a><a class="btn" data-book href="#end">Book an edit</a></nav>
+  <nav aria-label="Main"><a href="#info">About</a><a href="#videos">Videos</a><a href="#end">Contact</a></nav>
 </header>
 <main id="main">
 
 <section class="hook" id="hook">
-  <div class="reactor" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-  <div class="reactor-3d" aria-hidden="true"></div>
-  <div class="hook-text">
-    <h1>You have <span>2 seconds</span></h1>
-    <p class="lead">I'm Saksham Pandey, a video editor. I make them count.</p>
-    <div class="acts"><a class="btn" data-book href="#end">Book an edit</a><a class="link" href="#videos">See my videos</a></div>
+  <h1>You stopped scrolling.</h1>
+  <p class="job">That's the job.</p>
+  <div class="hook-foot">
+    <p>Saksham Pandey, video editor for creators and brands.</p>
+    <a class="btn" data-book href="#end">Book an edit</a>
   </div>
 </section>
 
 <section class="info" id="info">
-  <div class="info-head rise">
-    <h2>The editor behind the reels</h2>
-    <p class="lead">I'm a freelance video editor and motion designer in India, working remotely since January 2023 on reels, YouTube videos, ads and trailers.</p>
-    <p>Premiere Pro, Final Cut Pro, DaVinci Resolve.</p>
+  <div class="info-stage">
+    <h2>I'm Saksham</h2>
+    <p class="lit" id="lit">For 3+ years I've edited reels, trailers and YouTube videos so that every word lands on the frame it's spoken, every cut lands on a beat, and nobody gets a reason to leave.</p>
   </div>
-  <div class="gauges rise" role="list">
-    <div class="gauge" role="listitem"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52" pathLength="100" style="--v:75"/></svg><b>3+</b><span>Years editing</span></div>
-    <div class="gauge" role="listitem"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52" pathLength="100" style="--v:100"/></svg><b>6</b><span>Editing styles</span></div>
-    <div class="gauge" role="listitem"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52" pathLength="100" style="--v:50"/></svg><b>2</b><span>Formats, 9:16 and 16:9</span></div>
-  </div>
-  <dl class="skills">
-      <div class="skill rise" style="--i:0"><dt>Cut</dt><dd>Pauses and retakes come out on word boundaries, never mid-word.</dd></div>
-      <div class="skill rise" style="--i:1"><dt>Caption</dt><dd>Every word lands on its spoken frame, in English or Hinglish.</dd></div>
-      <div class="skill rise" style="--i:2"><dt>Animate</dt><dd>Cards, type and charts act out the idea, and never cover your face.</dd></div>
-      <div class="skill rise" style="--i:3"><dt>Mix</dt><dd>Real music and sound effects sit on the beats, with your voice clear.</dd></div>
-      <div class="skill rise" style="--i:4"><dt>Deliver</dt><dd>9:16 or 16:9 files, ready to post.</dd></div>
-  </dl>
 </section>
 
-<section class="videos" id="videos">
-  <div class="videos-head">
-    <h2>My videos</h2>
-    <p class="lead">Tap any video to watch it with sound.</p>
-  </div>
+<section class="work" id="videos">
   <div class="same" id="same">
     <div class="same-stage">
       <div class="same-text">
-        <h3>One line, three edits</h3>
+        <h2>Same line. Three edits.</h2>
         <p class="quote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
-        <p id="sameNote">Your face carries it, and a clean card explains the money.</p>
+        <p class="note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
+        <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
       </div>
       <div class="same-frame">
         <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
         <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
         <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="The line edited as Still Life"></video>
       </div>
-      <div class="same-controls">
-        <div class="pick" role="group" aria-label="Choose an edit">
-          <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
-          <button type="button" data-k="live" aria-pressed="false">Live Edit</button>
-          <button type="button" data-k="still" aria-pressed="false">Still Life</button>
-        </div>
-        <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
+      <div class="pick" role="group" aria-label="Choose an edit">
+        <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
+        <button type="button" data-k="live" aria-pressed="false">Live Edit</button>
+        <button type="button" data-k="still" aria-pressed="false">Still Life</button>
       </div>
     </div>
   </div>
-  <div class="grid" id="grid">
-    <button type="button" class="card rise" style="--i:0" data-play="s1" data-title="Margin Notes" aria-label="Watch Margin Notes with sound">
-      <video src="media/s1-loop.mp4" poster="media/s1-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Margin Notes</strong><span>Talking-head reels with clean explainer cards</span></span>
-    </button>
-    <button type="button" class="card rise" style="--i:1" data-play="s2" data-title="Yap" aria-label="Watch Yap with sound">
-      <video src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Yap</strong><span>Big lines turned into full-screen kinetic type</span></span>
-    </button>
-    <button type="button" class="card rise" style="--i:2" data-play="s3" data-title="Trailer" aria-label="Watch Trailer with sound">
-      <video src="media/s3-loop.mp4" poster="media/s3-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Trailer</strong><span>16:9 launches cut to the beat of the music</span></span>
-    </button>
-    <button type="button" class="card rise" style="--i:3" data-play="s4" data-title="Still Life" aria-label="Watch Still Life with sound">
-      <video src="media/s4-loop.mp4" poster="media/s4-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Still Life</strong><span>Voice-only reels, every frame built</span></span>
-    </button>
-    <button type="button" class="card rise" style="--i:4" data-play="s5" data-title="Live Edit" aria-label="Watch Live Edit with sound">
-      <video src="media/s5-loop.mp4" poster="media/s5-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Live Edit</strong><span>70% motion graphics, 30% face</span></span>
-    </button>
-    <button type="button" class="card rise" style="--i:5" data-play="s6" data-title="Orbit" aria-label="Watch Orbit with sound">
-      <video src="media/s6-loop.mp4" poster="media/s6-poster.jpg" muted loop playsinline preload="none"></video>
-      <span class="card-text"><strong>Orbit</strong><span>One seated shot turned into a scene</span></span>
-    </button>
+  <div class="strip" id="strip">
+    <div class="strip-stage">
+      <h2>Six styles, one editor</h2>
+      <div class="track" id="track">
+      <button type="button" class="reel" data-play="s1" data-title="Margin Notes" aria-label="Watch Margin Notes with sound">
+        <video src="media/s1-loop.mp4" poster="media/s1-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Margin Notes</strong> Talking-head reel</span>
+      </button>
+      <button type="button" class="reel" data-play="s2" data-title="Yap" aria-label="Watch Yap with sound">
+        <video src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Yap</strong> Kinetic-type reel</span>
+      </button>
+      <button type="button" class="reel wide" data-play="s3" data-title="Trailer" aria-label="Watch Trailer with sound">
+        <video src="media/s3-loop.mp4" poster="media/s3-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Trailer</strong> 16:9 launch trailer</span>
+      </button>
+      <button type="button" class="reel" data-play="s4" data-title="Still Life" aria-label="Watch Still Life with sound">
+        <video src="media/s4-loop.mp4" poster="media/s4-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Still Life</strong> Voice only, every frame built</span>
+      </button>
+      <button type="button" class="reel" data-play="s5" data-title="Live Edit" aria-label="Watch Live Edit with sound">
+        <video src="media/s5-loop.mp4" poster="media/s5-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Live Edit</strong> 70% motion graphics</span>
+      </button>
+      <button type="button" class="reel" data-play="s6" data-title="Orbit" aria-label="Watch Orbit with sound">
+        <video src="media/s6-loop.mp4" poster="media/s6-poster.jpg" muted loop playsinline preload="none"></video>
+        <span><strong>Orbit</strong> One seated shot</span>
+      </button>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="end" id="end">
-  <h2>Your video is next</h2>
-  <p class="lead">Send raw footage, a voice note or just an idea.</p>
+  <h2>Your turn.</h2>
   <a class="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
   <div class="ways" id="ways"></div>
   <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
 </section>
 </main>
+<div class="feed" id="feed" aria-hidden="true"></div>
 <dialog id="player" aria-label="Video with sound">
   <form method="dialog"><button class="btn" value="close">Close</button></form>
   <video controls playsinline></video>
 </dialog>
-<script src="config.js?v=24"></script>
-<script src="site.js?v=24"></script>
-<script src="vendor/three.min.js"></script>
-<script src="three3d.js?v=24"></script>
-<script src="avatar.js?v=24"></script>
+<script src="config.js?v=32"></script>
+<script src="site.js?v=32"></script>
 </body>
 </html>
