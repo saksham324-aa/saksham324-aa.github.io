@@ -6,7 +6,7 @@
 <title>About · Saksham Pandey</title>
 <meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
 <link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="site.css?v=10">
+<link rel="stylesheet" href="site.css?v=12">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="about">
@@ -70,8 +70,11 @@
 </section>
 <section class="cta">
   <h2>Got a video to edit?</h2>
-  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
-  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+  <div class="cta-text">
+    <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+    <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+  </div>
+  <div class="reel-3d" aria-hidden="true"></div>
 </section>
 </main>
 <footer class="foot">
@@ -87,7 +90,9 @@
   <form method="dialog"><button class="btn" value="close">Close</button></form>
   <video controls playsinline></video>
 </dialog>
-<script src="config.js?v=10"></script>
-<script src="site.js?v=10"></script>
+<script src="config.js?v=12"></script>
+<script src="site.js?v=12"></script>
+<script src="vendor/three.min.js"></script>
+<script src="three3d.js?v=12"></script>
 </body>
 </html>

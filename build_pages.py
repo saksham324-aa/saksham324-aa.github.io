@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "10"  # bump to bust the browser cache after changing css/js
+V = "12"  # bump to bust the browser cache after changing css/js
 
 STYLES = [
     ("s1", "Margin Notes", "Everyday talking-head reels", "Your face carries the reel while clean cards build on your words: a flow chart, a meter that fills, a number that counts up as you say it.", False),
@@ -71,6 +71,8 @@ def page(name, title, body):
 </dialog>
 <script src="config.js?v={V}"></script>
 <script src="site.js?v={V}"></script>
+<script src="vendor/three.min.js"></script>
+<script src="three3d.js?v={V}"></script>
 </body>
 </html>
 """
@@ -84,8 +86,11 @@ def frame(k, cls="", label=""):
 CTA = """
 <section class="cta">
   <h2>Got a video to edit?</h2>
-  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
-  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+  <div class="cta-text">
+    <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+    <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+  </div>
+  <div class="reel-3d" aria-hidden="true"></div>
 </section>"""
 
 HOME = """
@@ -155,8 +160,10 @@ STYLES_PAGE = """
     <p class="lead">Each style has its own rules for type, colour, motion and sound, and each one can be recoloured for your brand.</p>
     <a class="btn" data-book href="contact.html">Book an edit</a>
   </div>
+  <div class="ring-3d">
   <div class="strip">
 """ + "".join(f'    <a style="--i:{i}" href="#{k}" aria-label="{n}"><img src="media/{k}-poster.jpg" alt="A frame from {n}" width="270" height="480"></a>\n' for i, (k, n, _, _, w) in enumerate(STYLES)) + """  </div>
+  </div>
 </section>
 """ + style_rows() + CTA
 

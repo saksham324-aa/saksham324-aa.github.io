@@ -78,9 +78,18 @@ body[data-page=home] .bar .mark{visibility:hidden}
 @media (hover:hover){.brief-list a:hover{transform:translateX(8px)}}
 
 /* close */
-.cta{background:var(--field);color:var(--field-ink);padding:var(--gap) var(--edge);display:grid;grid-template-columns:1fr 1fr;gap:24px var(--edge);align-items:end}
+.cta{background:var(--field);color:var(--field-ink);padding:var(--gap) var(--edge);display:grid;grid-template-columns:5fr 7fr;gap:24px var(--edge);align-items:center}
+.cta-text{display:grid;gap:24px;justify-items:start}
 .cta h2{font-size:var(--display);grid-column:1/-1}
-.cta .btn{justify-self:end}
+.reel-3d{display:none}
+.has-3d .reel-3d{display:block;height:clamp(300px,34vw,480px);min-width:0}
+.reel-3d canvas,.ring-3d canvas,.hero-3d canvas{display:block;width:100%!important;height:100%!important}
+.hero-3d{position:absolute;left:50%;top:50%;height:min(87svh,calc(100svh - 110px));aspect-ratio:.76;transform:translate(-50%,-50%);pointer-events:none;animation:settle 1.1s var(--out) both}
+.has-3d .tex-source{opacity:0;animation:none}
+.ring-3d{position:relative;min-width:0}
+.has-3d .ring-3d{height:min(74svh,640px)}
+.has-3d .ring-3d canvas{position:absolute;inset:0}
+.has-3d .ring-3d .strip{position:absolute;inset:0;opacity:0;pointer-events:none}
 
 /* page heads */
 .page-head{padding:calc(var(--bar) + 48px) var(--edge) var(--gap);display:grid;grid-template-columns:7fr 5fr;gap:var(--edge) clamp(32px,6vw,96px);align-items:end}
@@ -202,7 +211,9 @@ dialog .btn{background:var(--bg);color:var(--ink)}
   .brief,.cta,.style,.style-wide,.about-head,.verb,.foot,.page-head,.contact-top{grid-template-columns:minmax(0,1fr)}
   .statement{position:static}
   .brief-list span{display:none}
-  .cta .btn{justify-self:start}
+  .has-3d .reel-3d{height:64vw}
+  .has-3d .ring-3d{height:100vw}
+  .hero-3d{top:calc(var(--bar) + 29vw);height:calc(100svh - var(--bar) - 29vw - 132px);transform:translateX(-50%);animation:none}
   .style{min-height:0;padding-block:64px}
   .style:nth-of-type(odd) .play{order:0;justify-self:start}
   .style-clip{height:auto;width:min(100%,380px)}
