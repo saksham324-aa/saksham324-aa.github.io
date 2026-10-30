@@ -126,7 +126,7 @@
     });
 
     stage(reelBox, 26, (scene, cam) => {
-      cam.position.set(1.1, .25, 7.4); cam.lookAt(1.1, 0, 0);
+      cam.position.set(.45, .25, 7.4); cam.lookAt(.45, 0, 0);
       scene.add(new T.AmbientLight(0xffffff, .28));
       const key = new T.DirectionalLight(0xffffff, 1.25); key.position.set(-3, 3.5, 4); scene.add(key);
       const rim = new T.DirectionalLight(0xffc9c0, .55); rim.position.set(4, -2, 2); scene.add(rim);

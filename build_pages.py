@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "17"  # bump to bust the browser cache after changing css/js
+V = "19"  # bump to bust the browser cache after changing css/js
 
 STYLES = [
     ("s1", "Margin Notes", "Everyday talking-head reels", "Your face carries the reel while clean cards build on your words: a flow chart, a meter that fills, a number that counts up as you say it.", False),
@@ -73,6 +73,7 @@ def page(name, title, body):
 <script src="site.js?v={V}"></script>
 <script src="vendor/three.min.js"></script>
 <script src="three3d.js?v={V}"></script>
+<script src="avatar.js?v={V}"></script>
 </body>
 </html>
 """

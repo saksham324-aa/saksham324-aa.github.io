@@ -216,6 +216,25 @@ dialog .btn{background:var(--bg);color:var(--ink)}
 .page-head .btn,.work-book,.ways{animation-delay:140ms}
 .strip a{animation:rise .8s var(--out) both;animation-delay:calc(var(--i,0)*60ms + 120ms)}
 
+
+/* the cartoon who walks the page */
+.ava{position:fixed;left:0;bottom:0;z-index:30;height:clamp(230px,40svh,350px);aspect-ratio:.62;pointer-events:none}
+.ava-flip,.ava-art,.ava-art svg{width:100%;height:100%}
+.ava-flip{transition:transform .25s var(--out)}
+.ava-art svg{display:block;overflow:visible}
+[data-eyes]{transform-box:fill-box;transform-origin:center;transition:transform .07s linear}
+.ava-say{position:absolute;left:78%;top:-2%;background:var(--accent);color:#fff;padding:9px 14px;border-radius:16px 16px 16px 4px;font-weight:600;font-size:var(--small);white-space:nowrap;opacity:0;transform:translateY(8px) scale(.96);transition:opacity .3s var(--out),transform .3s var(--out)}
+.ava-say.on{opacity:1;transform:none}
+.say-left .ava-say{left:auto;right:78%;border-radius:16px 16px 4px 16px}
+.on-red .ava-say{background:#fff;color:var(--ink)}
+.stm{animation:steam 4.2s ease-in-out infinite;opacity:0}
+.stm.s2{animation-delay:1.3s}
+.stm.s3{animation-delay:2.6s}
+@keyframes steam{0%{opacity:0;transform:translateY(16px)}35%{opacity:.85}100%{opacity:0;transform:translateY(-22px)}}
+@media (min-width:901px){.same-text{align-self:start;padding-top:9svh}}
+@media (max-width:900px){.ava{height:124px}.ava-say{font-size:.8125rem;padding:6px 10px}}
+@media (prefers-reduced-motion:reduce){.stm{opacity:.7;animation:none!important}}
+
 @media (max-width:900px){
   :root{--bar:64px}
   .bar nav{gap:4px;font-size:var(--small)}
