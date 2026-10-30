@@ -4,39 +4,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Work · Saksham Pandey</title>
-<meta name="description" content="Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v=10">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="work">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="mark" href="index.html">Saksham Pandey</a>
+  <nav aria-label="Main"><a href="styles.html">Styles</a><a href="work.html" aria-current=page>Work</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" data-book href="contact.html">Book an edit</a></nav>
+</header>
+<main id="main">
 
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Selected work</div>
-    <h1 class="disp">The <span class="red">work</span>.</h1>
-    <p>Each clip plays on its own. Tap any card to watch it with sound.</p>
+<section class="work">
+  <div class="work-held">
+    <video data-k="s1" src="media/s1-loop.mp4" poster="media/s1-poster.jpg" muted loop playsinline preload="none" aria-label="Brand deal payments"></video>
+    <video data-k="s2" src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline preload="none" aria-label="GST at ₹20 lakh"></video>
+    <video data-k="s3" src="media/s3-loop.mp4" poster="media/s3-poster.jpg" muted loop playsinline preload="none" aria-label="Episode launch"></video>
+    <video data-k="s4" src="media/s4-loop.mp4" poster="media/s4-poster.jpg" muted loop playsinline preload="none" aria-label="Where the money waits"></video>
+    <video data-k="s5" src="media/s5-loop.mp4" poster="media/s5-poster.jpg" muted loop playsinline preload="none" aria-label="Ninety days"></video>
+    <video data-k="s6" src="media/s6-loop.mp4" poster="media/s6-poster.jpg" muted loop playsinline preload="none" aria-label="Fast, not luxury"></video>
   </div>
-  <div class="filters mono">
-    <button class="on" data-f="all">All</button><button data-f="reels">Talking-head reels</button><button data-f="motion">Motion graphics</button>
-    <button data-f="trailers">Trailers</button><button data-f="podcast">Podcast clips</button><button data-f="nocam">No camera</button>
+  <div class="work-list">
+    <h1>The work</h1>
+    <p class="lead">Tap any title to watch it with sound.</p>
+    <a class="btn work-book" data-book href="contact.html">Book an edit</a>
+    <button type="button" class="work-row rise" data-k="s1" data-play="s1" data-title="Brand deal payments"><img class="work-thumb" src="media/s1-poster.jpg" alt="" loading="lazy"><span class="work-name">Brand deal payments</span><span class="work-fact">Margin Notes · talking-head reel · 84 s</span></button>
+    <button type="button" class="work-row rise" data-k="s2" data-play="s2" data-title="GST at ₹20 lakh"><img class="work-thumb" src="media/s2-poster.jpg" alt="" loading="lazy"><span class="work-name">GST at ₹20 lakh</span><span class="work-fact">Yap · kinetic-type reel · 35 s</span></button>
+    <button type="button" class="work-row rise" data-k="s3" data-play="s3" data-title="Episode launch"><img class="work-thumb" src="media/s3-poster.jpg" alt="" loading="lazy"><span class="work-name">Episode launch</span><span class="work-fact">Trailer · 16:9 · 31 s</span></button>
+    <button type="button" class="work-row rise" data-k="s4" data-play="s4" data-title="Where the money waits"><img class="work-thumb" src="media/s4-poster.jpg" alt="" loading="lazy"><span class="work-name">Where the money waits</span><span class="work-fact">Still Life · voice-only reel · 86 s</span></button>
+    <button type="button" class="work-row rise" data-k="s5" data-play="s5" data-title="Ninety days"><img class="work-thumb" src="media/s5-poster.jpg" alt="" loading="lazy"><span class="work-name">Ninety days</span><span class="work-fact">Live Edit · motion-graphics reel · 84 s</span></button>
+    <button type="button" class="work-row rise" data-k="s6" data-play="s6" data-title="Fast, not luxury"><img class="work-thumb" src="media/s6-poster.jpg" alt="" loading="lazy"><span class="work-name">Fast, not luxury</span><span class="work-fact">Orbit · stage clip sample · 14 s</span></button>
   </div>
-  <div class="grid" id="grid"></div>
 </section>
 
-<section class="end" id="cta">
-  <div class="glow" style="width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--rec);opacity:.2"></div>
-  <div class="mono reveal" style="font-size:14px;color:var(--hi);margin-bottom:20px">Up next · your video</div>
-  <h2 class="disp reveal">Let's make it<br><span class="red">move</span>.</h2>
-  <div class="pill reveal">
-    <span class="badge" data-initials></span>
-    <div class="t"><b data-name></b><span data-email></span></div>
-    <a class="btn" data-book>Book an edit
-      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
-  </div>
-  <a class="mono reveal" href="contact.html" style="margin-top:34px;font-size:12px;color:var(--dim)">All contact details →</a>
+<section class="cta">
+  <h2>Got a video to edit?</h2>
+  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
 </section>
-<script src="config.js?v=3"></script>
-<script src="site.js?v=3"></script>
+</main>
+<footer class="foot">
+  <video class="foot-pic" src="media/same-still.mp4" poster="media/same-still.jpg" muted loop playsinline preload="none" aria-label="A brass globe from a Still Life reel"></video>
+  <div class="foot-menu rise">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  </div>
+</footer>
+<dialog id="player" aria-label="Video with sound">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <video controls playsinline></video>
+</dialog>
+<script src="config.js?v=10"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>

@@ -4,34 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contact · Saksham Pandey</title>
-<meta name="description" content="Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v=10">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="contact">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="mark" href="index.html">Saksham Pandey</a>
+  <nav aria-label="Main"><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html" aria-current=page>Contact</a><a class="btn" data-book href="contact.html">Book an edit</a></nav>
+</header>
+<main id="main">
 
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Contact</div>
-    <h1 class="disp">Let's <span class="red">talk</span>.</h1>
-    <p>Send your raw footage, a voice note or just an idea. I usually reply within a day.</p>
-  </div>
-  <div class="cwrap">
+<section class="contact">
+  <div class="contact-top">
     <div>
-      <div class="me reveal"><span class="badge" data-initials></span><div><b data-name></b><span class="mono" style="font-size:12px">Video editor · Motion designer · 3+ years</span></div></div>
-      <div class="cgrid" id="cgrid"></div>
+      <h1>Tell me about your video</h1>
+      <p class="lead">Send raw footage, a voice note or just an idea.</p>
+      <div class="ways" id="ways"></div>
     </div>
-    <div class="book reveal" id="book">
-      <div class="mono" style="font-size:13px;color:var(--hi)">Book an edit</div>
-      <h2 class="disp">Schedule a <span class="red">call</span>.</h2>
-      <p>Fill a short form and pick a time. We'll talk about your video, the style and the timeline.</p>
-      <ol><li>Tell me about your video</li><li>Pick a time for a quick call</li><li>Get your first cut in 2–3 days</li></ol>
-      <a class="cta" data-book>Book a call ↗</a>
+    <div class="trio rise">
+      <img src="media/same-margin.jpg" alt="The same line edited as Margin Notes" width="270" height="480">
+      <img src="media/same-live.jpg" alt="The same line edited as Live Edit" width="270" height="480">
+      <img src="media/same-still.jpg" alt="The same line edited as Still Life" width="270" height="480">
     </div>
   </div>
+  <a class="mail rise" id="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
 </section>
-<script src="config.js?v=3"></script>
-<script src="site.js?v=3"></script>
+</main>
+<footer class="foot">
+  <video class="foot-pic" src="media/same-still.mp4" poster="media/same-still.jpg" muted loop playsinline preload="none" aria-label="A brass globe from a Still Life reel"></video>
+  <div class="foot-menu rise">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  </div>
+</footer>
+<dialog id="player" aria-label="Video with sound">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <video controls playsinline></video>
+</dialog>
+<script src="config.js?v=10"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>

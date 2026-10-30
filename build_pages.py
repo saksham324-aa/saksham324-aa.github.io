@@ -2,205 +2,229 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
+V = "10"  # bump to bust the browser cache after changing css/js
 
-def page(name, title, desc, body):
+STYLES = [
+    ("s1", "Margin Notes", "Everyday talking-head reels", "Your face carries the reel while clean cards build on your words: a flow chart, a meter that fills, a number that counts up as you say it.", False),
+    ("s2", "Yap", "Reels with lines worth shouting", "The talking head cuts to full-screen type on the key lines. Words land one by one, numbers fill meters, and every scene carries into the next.", False),
+    ("s3", "Trailer", "Episode launches and podcasts", "Widescreen trailers cut to the beat of the music: a cold-open question, bass hits on the big words, and a cliffhanger cut to black.", True),
+    ("s4", "Still Life", "Voice notes, no camera needed", "Send a voice note and every frame gets built: one photo-real object per sentence as a visual metaphor, with a new world every two seconds.", False),
+    ("s5", "Live Edit", "Explainers that must be watched", "It looks designed live: gradient keywords, a cursor, counter cards and charts. About 70% motion graphics, 30% your face on the lines that matter.", False),
+    ("s6", "Orbit", "Podcast and stage clips", "One seated shot becomes a scene. The guest is cut out, big keywords sit behind the head, and cards and a hologram ring orbit the body.", False),
+]
+
+WORK = [
+    ("s1", "Brand deal payments", "Margin Notes · talking-head reel · 84 s", "reels"),
+    ("s2", "GST at ₹20 lakh", "Yap · kinetic-type reel · 35 s", "reels"),
+    ("s3", "Episode launch", "Trailer · 16:9 · 31 s", "trailers"),
+    ("s4", "Where the money waits", "Still Life · voice-only reel · 86 s", "motion"),
+    ("s5", "Ninety days", "Live Edit · motion-graphics reel · 84 s", "motion"),
+    ("s6", "Fast, not luxury", "Orbit · stage clip sample · 14 s", "motion"),
+]
+
+VERBS = [
+    ("Cut", "Pauses and retakes come out on word boundaries, never mid-word, so the pace feels spoken rather than chopped.", "same-margin.jpg", ""),
+    ("Caption", "Every word appears on the frame it is said, in English or Roman-script Hinglish.", "s2-poster.jpg", "red"),
+    ("Animate", "Cards, type and charts act out the idea, and nothing sits on your face.", "same-live.jpg", ""),
+    ("Mix", "Real music and sound effects sit on the beats, with your voice clean and loud enough for a phone speaker.", "same-still.jpg", "red"),
+    ("Deliver", "You get 9:16 or 16:9 files, ready to post on Instagram or YouTube.", "s6-poster.jpg", ""),
+]
+
+
+def page(name, title, body):
+    nav = "".join(
+        f'<a href="{p}.html"{" aria-current=page" if p == name else ""}>{l}</a>'
+        for p, l in [("styles", "Styles"), ("work", "Work"), ("about", "About"), ("contact", "Contact")]
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
-<meta name="description" content="{desc}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v={V}">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="{name}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="mark" href="index.html">Saksham Pandey</a>
+  <nav aria-label="Main">{nav}<a class="btn" data-book href="contact.html">Book an edit</a></nav>
+</header>
+<main id="main">
 {body}
-<script src="config.js?v=3"></script>
-<script src="site.js?v=3"></script>
+</main>
+<footer class="foot">
+  <video class="foot-pic" src="media/same-still.mp4" poster="media/same-still.jpg" muted loop playsinline preload="none" aria-label="A brass globe from a Still Life reel"></video>
+  <div class="foot-menu rise">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  </div>
+</footer>
+<dialog id="player" aria-label="Video with sound">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <video controls playsinline></video>
+</dialog>
+<script src="config.js?v={V}"></script>
+<script src="site.js?v={V}"></script>
 </body>
 </html>
 """
 
-CAROUSEL = """
-<section id="carousel">
-  <div class="stick">
-    <div class="glow" id="cglow" style="width:800px;height:800px;right:5%;top:10%;opacity:.25;background:#2D4CF5;transition:background .6s"></div>
-    <div class="cinfo">
-      <div class="count mono"><b id="cnum">01</b> / 06 · Style library · scroll to turn</div>
-      <div class="swap" id="cswap">
-        <h3 class="disp" id="ctitle"></h3>
-        <div class="for mono" id="cfor"></div>
-        <p id="cdesc"></p>
-        <ul id="clist"></ul>
-      </div>
-      <button class="watch mono" id="cwatch">▶ Watch with sound</button>
-    </div>
-    <div class="stage"><div class="floor"></div><div class="cyl" id="cyl"></div></div>
-    <div class="dots" id="dots"></div>
-  </div>
-</section>"""
 
-END_CARD = """
-<section class="end" id="cta">
-  <div class="glow" style="width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--rec);opacity:.2"></div>
-  <div class="mono reveal" style="font-size:14px;color:var(--hi);margin-bottom:20px">Up next · your video</div>
-  <h2 class="disp reveal">Let's make it<br><span class="red">move</span>.</h2>
-  <div class="pill reveal">
-    <span class="badge" data-initials></span>
-    <div class="t"><b data-name></b><span data-email></span></div>
-    <a class="btn" data-book>Book an edit
-      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
-  </div>
-  <a class="mono reveal" href="contact.html" style="margin-top:34px;font-size:12px;color:var(--dim)">All contact details →</a>
-</section>"""
+def frame(k, cls="", label=""):
+    return (f'<video class="clip {cls}" src="media/{k}-loop.mp4" poster="media/{k}-poster.jpg" '
+            f'muted loop playsinline preload="none" aria-label="{label}"></video>')
 
-PROCESS = """
-<section id="process">
-  <div class="stick wrap">
-    <div class="sh" style="padding:0">
-      <div class="mono">Process</div>
-      <h2 class="disp">From raw file to <span class="red">ready to post</span>.</h2>
-    </div>
-    <div class="tracks">
-      <div class="ruler2 mono"><span>00:00</span><span>Day 1</span><span>Day 1</span><span>Day 2</span><span>Day 2</span><span>Day 3</span></div>
-      <div class="clips">
-        <div class="clip" style="--c:var(--dim)"><span class="mono">V1 · Brief</span><b>Send raw</b><span>Footage, a voice note or podcast files. We pick a style.</span></div>
-        <div class="clip" style="--c:var(--rec)"><span class="mono">V2 · Cut</span><b>Tight cut</b><span>Pauses and retakes out, cut on word edges.</span></div>
-        <div class="clip" style="--c:var(--hi)"><span class="mono">V3 · Words</span><b>Captions</b><span>Transcribed, every word timed to its frame.</span></div>
-        <div class="clip" style="--c:var(--blue)"><span class="mono">V4 · Motion</span><b>Graphics</b><span>Hook, cards, type scenes and transitions.</span></div>
-        <div class="clip" style="--c:var(--violet)"><span class="mono">A1 · Sound</span><b>Sound mix</b><span>Music bed, SFX on every beat, mastered loud.</span></div>
-        <div class="clip last"><span class="mono">Export</span><b>Delivered</b><span>9:16 or 16:9, ready to post. One round of changes included.</span></div>
-      </div>
-      <div class="wave" id="wave"></div>
-      <div class="phead" id="phead"></div>
-    </div>
-  </div>
+
+CTA = """
+<section class="cta">
+  <h2>Got a video to edit?</h2>
+  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
 </section>"""
 
 HOME = """
-<header class="wrap hero">
-  <div class="glow" style="width:700px;height:700px;right:-100px;top:-120px;background:var(--rec);opacity:.18"></div>
-  <div class="glow" style="width:600px;height:600px;right:200px;bottom:-200px;background:var(--blue);opacity:.22"></div>
-  <div style="position:relative;z-index:2">
-    <div class="kicker mono">Video editor · Motion designer</div>
-    <h1 class="disp"><span><i>Saksham</i></span><span><i>Pandey</i></span></h1>
-    <p class="lead">Short-form edits that <span class="hl">move on every word</span>. Reels, trailers and motion graphics for creators and brands.</p>
-    <div class="stats">
-      <div><b data-count="3" data-suffix="+">0</b><small class="mono">Years editing</small></div>
-      <div><b data-count="6">0</b><small class="mono">Signature styles</small></div>
-      <div><b>9:16<span style="color:var(--dim);font-size:.55em"> + </span>16:9</b><small class="mono">Reels &amp; trailers</small></div>
-    </div>
-    <div class="ctas"><a class="cta" href="styles.html">▶ Watch the styles</a><a class="cta ghost" data-book>Book an edit</a></div>
+<section class="hero">
+  <h1><span class="name-a">Saksham</span> <span class="name-b">Pandey</span></h1>
+  <video class="clip hero-frame" src="media/reel.mp4" poster="media/reel.jpg" muted loop playsinline autoplay aria-label="A fast showreel of six editing styles"></video>
+  <div class="hero-side">
+    <p class="lead">I edit reels, trailers and YouTube videos for creators and brands.</p>
+    <a class="btn" data-book href="contact.html">Book an edit</a>
+    <a class="link" href="work.html">See the work</a>
   </div>
-  <div class="orbit" id="orbit">
-    <div class="scene" id="oscene">
-      <div class="ring" id="ring"></div>
-      <div class="core">
-        <div class="phone"><video src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline autoplay></video></div>
-        <div class="playing mono">● Now playing · Style 02 Yap</div>
+</section>
+
+<section class="same" id="same">
+  <div class="same-stage">
+    <div class="same-text">
+      <h2>One line, three edits</h2>
+      <p class="quote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
+      <p class="same-note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
+    </div>
+    <div class="same-frame">
+      <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
+      <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
+      <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="The line edited as Still Life"></video>
+    </div>
+    <div class="same-controls">
+      <div class="pick" role="group" aria-label="Choose an edit">
+        <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
+        <button type="button" data-k="live" aria-pressed="false">Live Edit</button>
+        <button type="button" data-k="still" aria-pressed="false">Still Life</button>
       </div>
+      <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
     </div>
   </div>
-</header>
-""" + CAROUSEL + """
-<section class="wrap">
-  <div class="sh reveal">
-    <div class="mono">Selected work</div>
-    <h2 class="disp">Six ways to tell<br>the same <span class="red">story</span>.</h2>
-  </div>
-  <div class="grid" id="grid" data-limit="3"></div>
-  <div class="more"><a class="cta ghost" href="work.html">See all work →</a></div>
 </section>
-""" + END_CARD
 
-STYLES = """
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Style library</div>
-    <h1 class="disp">Six ways to tell<br>the same <span class="red">story</span>.</h1>
-    <p>Same raw footage, a different feel. Scroll to turn the library, or read each style below. Every style can be recoloured to your brand.</p>
-  </div>
+<section class="brief">
+  <p class="statement">I don't have one look. I have six styles, and I pick the one that fits your content.</p>
+  <div class="brief-list">
+""" + "".join(f'    <a class="rise" style="--i:{i}" href="styles.html#{k}"><strong>{n}</strong><span>{f}</span></a>\n' for i, (k, n, f, _, _) in enumerate(STYLES)) + """  </div>
 </section>
-""" + CAROUSEL + """
-<section class="wrap" id="rows"></section>
-""" + END_CARD
+""" + CTA
 
-WORK = """
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Selected work</div>
-    <h1 class="disp">The <span class="red">work</span>.</h1>
-    <p>Each clip plays on its own. Tap any card to watch it with sound.</p>
+
+def style_rows():
+    out = []
+    for i, (k, n, f, d, wide) in enumerate(STYLES):
+        out.append(f"""
+<section class="style{' style-red' if i % 2 else ''}{' style-wide' if wide else ''}" id="{k}">
+  <button type="button" class="play" data-play="{k}" data-title="{n}" aria-label="Watch {n} with sound">
+    {frame(k, 'style-clip', n + ' edit')}
+  </button>
+  <div class="style-text rise">
+    <h2>{n}</h2>
+    <p class="lead">{f}</p>
+    <p>{d}</p>
+    <button type="button" class="link" data-play="{k}" data-title="{n}">Watch with sound</button>
   </div>
-  <div class="filters mono">
-    <button class="on" data-f="all">All</button><button data-f="reels">Talking-head reels</button><button data-f="motion">Motion graphics</button>
-    <button data-f="trailers">Trailers</button><button data-f="podcast">Podcast clips</button><button data-f="nocam">No camera</button>
+</section>""")
+    return "".join(out)
+
+
+STYLES_PAGE = """
+<section class="page-head">
+  <div>
+    <h1>Six styles, one editor</h1>
+    <p class="lead">Each style has its own rules for type, colour, motion and sound, and each one can be recoloured for your brand.</p>
+    <a class="btn" data-book href="contact.html">Book an edit</a>
   </div>
-  <div class="grid" id="grid"></div>
+  <div class="strip">
+""" + "".join(f'    <a style="--i:{i}" href="#{k}" aria-label="{n}"><img src="media/{k}-poster.jpg" alt="A frame from {n}" width="270" height="480"></a>\n' for i, (k, n, _, _, w) in enumerate(STYLES)) + """  </div>
 </section>
-""" + END_CARD
+""" + style_rows() + CTA
 
-ABOUT = """
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Who's behind the timeline</div>
-    <h1 class="disp">3+ years of cutting<br>for the <span class="red">scroll</span>.</h1>
-  </div>
-  <div class="about">
-    <div class="reveal">
-      <p>I'm <span data-name></span>, a short-form video editor and motion designer. For 3+ years I've edited for creators and brands: talking-head reels, kinetic-type explainers, launch trailers, interview cuts and fully animated voice-only reels.</p>
-      <p style="margin-top:20px">I don't have one look. I have a library of six styles, and I pick (or build) the one that fits your content, your audience and your brand colours.</p>
-      <div class="tags"><span>Hinglish &amp; English captions</span><span>Motion graphics</span><span>Kinetic typography</span><span>Sound design</span><span>Multicam sync</span><span>Trailers</span><span>AI-assisted visuals</span></div>
-    </div>
-    <div class="promise reveal">
-      <div><span class="mono">01</span><p><b>Frame-exact captions</b><span>Every word appears on the frame it's spoken. Never early.</span></p></div>
-      <div><span class="mono">02</span><p><b>A hook in the first 2 seconds</b><span>A cold-open teaser built from your strongest line.</span></p></div>
-      <div><span class="mono">03</span><p><b>Clean, tight cuts</b><span>Pauses removed on word boundaries, never mid-word.</span></p></div>
-      <div><span class="mono">04</span><p><b>Real sound design</b><span>Licensed SFX and music, mixed loud and clean for Instagram and YouTube.</span></p></div>
-      <div><span class="mono">05</span><p><b>Your face stays clear</b><span>Graphics live around you, never on you.</span></p></div>
-    </div>
-  </div>
-  <div class="bignums reveal">
-    <div><b data-count="3" data-suffix="+">0</b><span class="mono">Years editing</span></div>
-    <div><b data-count="6">0</b><span class="mono">Signature styles</span></div>
-    <div><b>9:16</b><span class="mono">Reels, shorts, stories</span></div>
-    <div><b>16:9</b><span class="mono">YouTube &amp; trailers</span></div>
-  </div>
+WORK_PAGE = """
+<section class="work">
+  <div class="work-held">
+""" + "".join(
+    f'    <video data-k="{k}" src="media/{k}-loop.mp4" poster="media/{k}-poster.jpg" muted loop playsinline preload="none" aria-label="{n}"></video>\n'
+    for k, n, _, _ in WORK) + """  </div>
+  <div class="work-list">
+    <h1>The work</h1>
+    <p class="lead">Tap any title to watch it with sound.</p>
+    <a class="btn work-book" data-book href="contact.html">Book an edit</a>
+""" + "".join(
+    f'    <button type="button" class="work-row rise" data-k="{k}" data-play="{k}" data-title="{n}"><img class="work-thumb" src="media/{k}-poster.jpg" alt="" loading="lazy"><span class="work-name">{n}</span><span class="work-fact">{m}</span></button>\n'
+    for k, n, m, _ in WORK) + """  </div>
 </section>
-""" + PROCESS + END_CARD
+""" + CTA
 
-CONTACT = """
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Contact</div>
-    <h1 class="disp">Let's <span class="red">talk</span>.</h1>
-    <p>Send your raw footage, a voice note or just an idea. I usually reply within a day.</p>
+ABOUT_PAGE = """
+<section class="about-head">
+  <h1>3+ years cutting for the scroll</h1>
+  <div>
+    <p class="lead">I'm Saksham, a freelance video editor and motion designer in India, working remotely since January 2023.</p>
+    <p>I edit Instagram reels, YouTube videos, ads and trailers. I studied electronics and communication engineering at Galgotias University.</p>
+    <a class="btn" data-book href="contact.html">Book an edit</a>
   </div>
-  <div class="cwrap">
+  <dl class="facts rise">
+    <div><dt>Editing</dt><dd>Premiere Pro, Final Cut Pro, DaVinci Resolve</dd></div>
+    <div><dt>Motion</dt><dd>Motion graphics, kinetic type, animated captions</dd></div>
+    <div><dt>Sound</dt><dd>Sound design, music edits, voice clean-up</dd></div>
+    <div><dt>Captions</dt><dd>English and Roman-script Hinglish</dd></div>
+    <div><dt>Projects</dt><dd>VOX Ai promo, Renovate Ai ad, viral Instagram reels</dd></div>
+  </dl>
+</section>
+""" + "".join(f"""
+<section class="verb{' verb-red' if c else ''}">
+  <h2 class="verb-word rise">{v}</h2>
+  <div class="verb-side rise">
+    <img src="media/{img}" alt="A frame from a {v.lower()} stage of an edit" width="540" height="960" loading="lazy">
+    <p class="lead">{t}</p>
+  </div>
+</section>""" for v, t, img, c in VERBS) + CTA
+
+CONTACT_PAGE = """
+<section class="contact">
+  <div class="contact-top">
     <div>
-      <div class="me reveal"><span class="badge" data-initials></span><div><b data-name></b><span class="mono" style="font-size:12px">Video editor · Motion designer · 3+ years</span></div></div>
-      <div class="cgrid" id="cgrid"></div>
+      <h1>Tell me about your video</h1>
+      <p class="lead">Send raw footage, a voice note or just an idea.</p>
+      <div class="ways" id="ways"></div>
     </div>
-    <div class="book reveal" id="book">
-      <div class="mono" style="font-size:13px;color:var(--hi)">Book an edit</div>
-      <h2 class="disp">Schedule a <span class="red">call</span>.</h2>
-      <p>Fill a short form and pick a time. We'll talk about your video, the style and the timeline.</p>
-      <ol><li>Tell me about your video</li><li>Pick a time for a quick call</li><li>Get your first cut in 2–3 days</li></ol>
-      <a class="cta" data-book>Book a call ↗</a>
+    <div class="trio rise">
+      <img src="media/same-margin.jpg" alt="The same line edited as Margin Notes" width="270" height="480">
+      <img src="media/same-live.jpg" alt="The same line edited as Live Edit" width="270" height="480">
+      <img src="media/same-still.jpg" alt="The same line edited as Still Life" width="270" height="480">
     </div>
   </div>
+  <a class="mail rise" id="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
 </section>"""
 
 PAGES = {
-    "index":   ("home",    "Saksham Pandey · Video Editor", HOME),
-    "styles":  ("styles",  "Styles · Saksham Pandey", STYLES),
-    "work":    ("work",    "Work · Saksham Pandey", WORK),
-    "about":   ("about",   "About · Saksham Pandey", ABOUT),
-    "contact": ("contact", "Contact · Saksham Pandey", CONTACT),
+    "index": ("home", "Saksham Pandey, video editor", HOME),
+    "styles": ("styles", "Editing styles · Saksham Pandey", STYLES_PAGE),
+    "work": ("work", "Work · Saksham Pandey", WORK_PAGE),
+    "about": ("about", "About · Saksham Pandey", ABOUT_PAGE),
+    "contact": ("contact", "Contact · Saksham Pandey", CONTACT_PAGE),
 }
-DESC = "Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics."
 for fn, (name, title, body) in PAGES.items():
-    (HERE / f"{fn}.html").write_text(page(name, title, DESC, body), encoding="utf-8")
+    (HERE / f"{fn}.html").write_text(page(name, title, body), encoding="utf-8")
     print("wrote", fn + ".html")

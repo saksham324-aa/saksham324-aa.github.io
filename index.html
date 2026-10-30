@@ -3,78 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Saksham Pandey · Video Editor</title>
-<meta name="description" content="Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<title>Saksham Pandey, video editor</title>
+<meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v=10">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="home">
-
-<header class="wrap hero">
-  <div class="glow" style="width:700px;height:700px;right:-100px;top:-120px;background:var(--rec);opacity:.18"></div>
-  <div class="glow" style="width:600px;height:600px;right:200px;bottom:-200px;background:var(--blue);opacity:.22"></div>
-  <div style="position:relative;z-index:2">
-    <div class="kicker mono">Video editor · Motion designer</div>
-    <h1 class="disp"><span><i>Saksham</i></span><span><i>Pandey</i></span></h1>
-    <p class="lead">Short-form edits that <span class="hl">move on every word</span>. Reels, trailers and motion graphics for creators and brands.</p>
-    <div class="stats">
-      <div><b data-count="3" data-suffix="+">0</b><small class="mono">Years editing</small></div>
-      <div><b data-count="6">0</b><small class="mono">Signature styles</small></div>
-      <div><b>9:16<span style="color:var(--dim);font-size:.55em"> + </span>16:9</b><small class="mono">Reels &amp; trailers</small></div>
-    </div>
-    <div class="ctas"><a class="cta" href="styles.html">▶ Watch the styles</a><a class="cta ghost" data-book>Book an edit</a></div>
-  </div>
-  <div class="orbit" id="orbit">
-    <div class="scene" id="oscene">
-      <div class="ring" id="ring"></div>
-      <div class="core">
-        <div class="phone"><video src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline autoplay></video></div>
-        <div class="playing mono">● Now playing · Style 02 Yap</div>
-      </div>
-    </div>
-  </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="mark" href="index.html">Saksham Pandey</a>
+  <nav aria-label="Main"><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" data-book href="contact.html">Book an edit</a></nav>
 </header>
+<main id="main">
 
-<section id="carousel">
-  <div class="stick">
-    <div class="glow" id="cglow" style="width:800px;height:800px;right:5%;top:10%;opacity:.25;background:#2D4CF5;transition:background .6s"></div>
-    <div class="cinfo">
-      <div class="count mono"><b id="cnum">01</b> / 06 · Style library · scroll to turn</div>
-      <div class="swap" id="cswap">
-        <h3 class="disp" id="ctitle"></h3>
-        <div class="for mono" id="cfor"></div>
-        <p id="cdesc"></p>
-        <ul id="clist"></ul>
-      </div>
-      <button class="watch mono" id="cwatch">▶ Watch with sound</button>
+<section class="hero">
+  <h1><span class="name-a">Saksham</span> <span class="name-b">Pandey</span></h1>
+  <video class="clip hero-frame" src="media/reel.mp4" poster="media/reel.jpg" muted loop playsinline autoplay aria-label="A fast showreel of six editing styles"></video>
+  <div class="hero-side">
+    <p class="lead">I edit reels, trailers and YouTube videos for creators and brands.</p>
+    <a class="btn" data-book href="contact.html">Book an edit</a>
+    <a class="link" href="work.html">See the work</a>
+  </div>
+</section>
+
+<section class="same" id="same">
+  <div class="same-stage">
+    <div class="same-text">
+      <h2>One line, three edits</h2>
+      <p class="quote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
+      <p class="same-note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
     </div>
-    <div class="stage"><div class="floor"></div><div class="cyl" id="cyl"></div></div>
-    <div class="dots" id="dots"></div>
+    <div class="same-frame">
+      <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
+      <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
+      <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="The line edited as Still Life"></video>
+    </div>
+    <div class="same-controls">
+      <div class="pick" role="group" aria-label="Choose an edit">
+        <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
+        <button type="button" data-k="live" aria-pressed="false">Live Edit</button>
+        <button type="button" data-k="still" aria-pressed="false">Still Life</button>
+      </div>
+      <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
+    </div>
   </div>
-</section>
-<section class="wrap">
-  <div class="sh reveal">
-    <div class="mono">Selected work</div>
-    <h2 class="disp">Six ways to tell<br>the same <span class="red">story</span>.</h2>
-  </div>
-  <div class="grid" id="grid" data-limit="3"></div>
-  <div class="more"><a class="cta ghost" href="work.html">See all work →</a></div>
 </section>
 
-<section class="end" id="cta">
-  <div class="glow" style="width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--rec);opacity:.2"></div>
-  <div class="mono reveal" style="font-size:14px;color:var(--hi);margin-bottom:20px">Up next · your video</div>
-  <h2 class="disp reveal">Let's make it<br><span class="red">move</span>.</h2>
-  <div class="pill reveal">
-    <span class="badge" data-initials></span>
-    <div class="t"><b data-name></b><span data-email></span></div>
-    <a class="btn" data-book>Book an edit
-      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+<section class="brief">
+  <p class="statement">I don't have one look. I have six styles, and I pick the one that fits your content.</p>
+  <div class="brief-list">
+    <a class="rise" style="--i:0" href="styles.html#s1"><strong>Margin Notes</strong><span>Everyday talking-head reels</span></a>
+    <a class="rise" style="--i:1" href="styles.html#s2"><strong>Yap</strong><span>Reels with lines worth shouting</span></a>
+    <a class="rise" style="--i:2" href="styles.html#s3"><strong>Trailer</strong><span>Episode launches and podcasts</span></a>
+    <a class="rise" style="--i:3" href="styles.html#s4"><strong>Still Life</strong><span>Voice notes, no camera needed</span></a>
+    <a class="rise" style="--i:4" href="styles.html#s5"><strong>Live Edit</strong><span>Explainers that must be watched</span></a>
+    <a class="rise" style="--i:5" href="styles.html#s6"><strong>Orbit</strong><span>Podcast and stage clips</span></a>
   </div>
-  <a class="mono reveal" href="contact.html" style="margin-top:34px;font-size:12px;color:var(--dim)">All contact details →</a>
 </section>
-<script src="config.js?v=3"></script>
-<script src="site.js?v=3"></script>
+
+<section class="cta">
+  <h2>Got a video to edit?</h2>
+  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+</section>
+</main>
+<footer class="foot">
+  <video class="foot-pic" src="media/same-still.mp4" poster="media/same-still.jpg" muted loop playsinline preload="none" aria-label="A brass globe from a Still Life reel"></video>
+  <div class="foot-menu rise">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  </div>
+</footer>
+<dialog id="player" aria-label="Video with sound">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <video controls playsinline></video>
+</dialog>
+<script src="config.js?v=10"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>

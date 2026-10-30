@@ -3,54 +3,122 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Styles · Saksham Pandey</title>
-<meta name="description" content="Short-form video editor and motion designer. 3+ years, six signature editing styles: reels, trailers and motion graphics.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<title>Editing styles · Saksham Pandey</title>
+<meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css?v=10">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body data-page="styles">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="mark" href="index.html">Saksham Pandey</a>
+  <nav aria-label="Main"><a href="styles.html" aria-current=page>Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" data-book href="contact.html">Book an edit</a></nav>
+</header>
+<main id="main">
 
-<section class="wrap pagehead">
-  <div class="sh reveal" style="padding-top:0">
-    <div class="mono">Style library</div>
-    <h1 class="disp">Six ways to tell<br>the same <span class="red">story</span>.</h1>
-    <p>Same raw footage, a different feel. Scroll to turn the library, or read each style below. Every style can be recoloured to your brand.</p>
+<section class="page-head">
+  <div>
+    <h1>Six styles, one editor</h1>
+    <p class="lead">Each style has its own rules for type, colour, motion and sound, and each one can be recoloured for your brand.</p>
+    <a class="btn" data-book href="contact.html">Book an edit</a>
+  </div>
+  <div class="strip">
+    <a style="--i:0" href="#s1" aria-label="Margin Notes"><img src="media/s1-poster.jpg" alt="A frame from Margin Notes" width="270" height="480"></a>
+    <a style="--i:1" href="#s2" aria-label="Yap"><img src="media/s2-poster.jpg" alt="A frame from Yap" width="270" height="480"></a>
+    <a style="--i:2" href="#s3" aria-label="Trailer"><img src="media/s3-poster.jpg" alt="A frame from Trailer" width="270" height="480"></a>
+    <a style="--i:3" href="#s4" aria-label="Still Life"><img src="media/s4-poster.jpg" alt="A frame from Still Life" width="270" height="480"></a>
+    <a style="--i:4" href="#s5" aria-label="Live Edit"><img src="media/s5-poster.jpg" alt="A frame from Live Edit" width="270" height="480"></a>
+    <a style="--i:5" href="#s6" aria-label="Orbit"><img src="media/s6-poster.jpg" alt="A frame from Orbit" width="270" height="480"></a>
   </div>
 </section>
 
-<section id="carousel">
-  <div class="stick">
-    <div class="glow" id="cglow" style="width:800px;height:800px;right:5%;top:10%;opacity:.25;background:#2D4CF5;transition:background .6s"></div>
-    <div class="cinfo">
-      <div class="count mono"><b id="cnum">01</b> / 06 · Style library · scroll to turn</div>
-      <div class="swap" id="cswap">
-        <h3 class="disp" id="ctitle"></h3>
-        <div class="for mono" id="cfor"></div>
-        <p id="cdesc"></p>
-        <ul id="clist"></ul>
-      </div>
-      <button class="watch mono" id="cwatch">▶ Watch with sound</button>
-    </div>
-    <div class="stage"><div class="floor"></div><div class="cyl" id="cyl"></div></div>
-    <div class="dots" id="dots"></div>
+<section class="style" id="s1">
+  <button type="button" class="play" data-play="s1" data-title="Margin Notes" aria-label="Watch Margin Notes with sound">
+    <video class="clip style-clip" src="media/s1-loop.mp4" poster="media/s1-poster.jpg" muted loop playsinline preload="none" aria-label="Margin Notes edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Margin Notes</h2>
+    <p class="lead">Everyday talking-head reels</p>
+    <p>Your face carries the reel while clean cards build on your words: a flow chart, a meter that fills, a number that counts up as you say it.</p>
+    <button type="button" class="link" data-play="s1" data-title="Margin Notes">Watch with sound</button>
   </div>
 </section>
-<section class="wrap" id="rows"></section>
-
-<section class="end" id="cta">
-  <div class="glow" style="width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--rec);opacity:.2"></div>
-  <div class="mono reveal" style="font-size:14px;color:var(--hi);margin-bottom:20px">Up next · your video</div>
-  <h2 class="disp reveal">Let's make it<br><span class="red">move</span>.</h2>
-  <div class="pill reveal">
-    <span class="badge" data-initials></span>
-    <div class="t"><b data-name></b><span data-email></span></div>
-    <a class="btn" data-book>Book an edit
-      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+<section class="style style-red" id="s2">
+  <button type="button" class="play" data-play="s2" data-title="Yap" aria-label="Watch Yap with sound">
+    <video class="clip style-clip" src="media/s2-loop.mp4" poster="media/s2-poster.jpg" muted loop playsinline preload="none" aria-label="Yap edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Yap</h2>
+    <p class="lead">Reels with lines worth shouting</p>
+    <p>The talking head cuts to full-screen type on the key lines. Words land one by one, numbers fill meters, and every scene carries into the next.</p>
+    <button type="button" class="link" data-play="s2" data-title="Yap">Watch with sound</button>
   </div>
-  <a class="mono reveal" href="contact.html" style="margin-top:34px;font-size:12px;color:var(--dim)">All contact details →</a>
 </section>
-<script src="config.js?v=3"></script>
-<script src="site.js?v=3"></script>
+<section class="style style-wide" id="s3">
+  <button type="button" class="play" data-play="s3" data-title="Trailer" aria-label="Watch Trailer with sound">
+    <video class="clip style-clip" src="media/s3-loop.mp4" poster="media/s3-poster.jpg" muted loop playsinline preload="none" aria-label="Trailer edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Trailer</h2>
+    <p class="lead">Episode launches and podcasts</p>
+    <p>Widescreen trailers cut to the beat of the music: a cold-open question, bass hits on the big words, and a cliffhanger cut to black.</p>
+    <button type="button" class="link" data-play="s3" data-title="Trailer">Watch with sound</button>
+  </div>
+</section>
+<section class="style style-red" id="s4">
+  <button type="button" class="play" data-play="s4" data-title="Still Life" aria-label="Watch Still Life with sound">
+    <video class="clip style-clip" src="media/s4-loop.mp4" poster="media/s4-poster.jpg" muted loop playsinline preload="none" aria-label="Still Life edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Still Life</h2>
+    <p class="lead">Voice notes, no camera needed</p>
+    <p>Send a voice note and every frame gets built: one photo-real object per sentence as a visual metaphor, with a new world every two seconds.</p>
+    <button type="button" class="link" data-play="s4" data-title="Still Life">Watch with sound</button>
+  </div>
+</section>
+<section class="style" id="s5">
+  <button type="button" class="play" data-play="s5" data-title="Live Edit" aria-label="Watch Live Edit with sound">
+    <video class="clip style-clip" src="media/s5-loop.mp4" poster="media/s5-poster.jpg" muted loop playsinline preload="none" aria-label="Live Edit edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Live Edit</h2>
+    <p class="lead">Explainers that must be watched</p>
+    <p>It looks designed live: gradient keywords, a cursor, counter cards and charts. About 70% motion graphics, 30% your face on the lines that matter.</p>
+    <button type="button" class="link" data-play="s5" data-title="Live Edit">Watch with sound</button>
+  </div>
+</section>
+<section class="style style-red" id="s6">
+  <button type="button" class="play" data-play="s6" data-title="Orbit" aria-label="Watch Orbit with sound">
+    <video class="clip style-clip" src="media/s6-loop.mp4" poster="media/s6-poster.jpg" muted loop playsinline preload="none" aria-label="Orbit edit"></video>
+  </button>
+  <div class="style-text rise">
+    <h2>Orbit</h2>
+    <p class="lead">Podcast and stage clips</p>
+    <p>One seated shot becomes a scene. The guest is cut out, big keywords sit behind the head, and cards and a hologram ring orbit the body.</p>
+    <button type="button" class="link" data-play="s6" data-title="Orbit">Watch with sound</button>
+  </div>
+</section>
+<section class="cta">
+  <h2>Got a video to edit?</h2>
+  <p class="lead">Send the raw footage or just a voice note, and we'll pick the style together.</p>
+  <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
+</section>
+</main>
+<footer class="foot">
+  <video class="foot-pic" src="media/same-still.mp4" poster="media/same-still.jpg" muted loop playsinline preload="none" aria-label="A brass globe from a Still Life reel"></video>
+  <div class="foot-menu rise">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a><a href="styles.html">Styles</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  </div>
+</footer>
+<dialog id="player" aria-label="Video with sound">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <video controls playsinline></video>
+</dialog>
+<script src="config.js?v=10"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>
