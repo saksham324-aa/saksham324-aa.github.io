@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "12"  # bump to bust the browser cache after changing css/js
+V = "17"  # bump to bust the browser cache after changing css/js
 
 STYLES = [
     ("s1", "Margin Notes", "Everyday talking-head reels", "Your face carries the reel while clean cards build on your words: a flow chart, a meter that fills, a number that counts up as you say it.", False),
@@ -43,7 +43,7 @@ def page(name, title, body):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
-<link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/BebasNeue-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -94,14 +94,26 @@ CTA = """
 </section>"""
 
 HOME = """
-<section class="hero">
-  <h1><span class="name-a">Saksham</span> <span class="name-b">Pandey</span></h1>
-  <video class="clip hero-frame" src="media/reel.mp4" poster="media/reel.jpg" muted loop playsinline autoplay aria-label="A fast showreel of six editing styles"></video>
-  <div class="hero-side">
+<section class="mag">
+  <div class="mag-black" aria-hidden="true"></div>
+  <div class="mag-left">
     <p class="lead">I edit reels, trailers and YouTube videos for creators and brands.</p>
-    <a class="btn" data-book href="contact.html">Book an edit</a>
+    <a class="btn btn-light" data-book href="contact.html">Book an edit</a>
     <a class="link" href="work.html">See the work</a>
   </div>
+  <div class="mag-badges">
+    <a class="dot dot-w" href="work.html"><b>0:13</b><small>Reel</small></a>
+    <a class="dot dot-r" href="styles.html"><b>6</b><small>Styles</small></a>
+    <a class="dot dot-k" href="about.html"><b>3+</b><small>Years</small></a>
+  </div>
+  <p class="mag-quote">Every word lands on the frame it is spoken.</p>
+  <div class="pile">
+    <img class="o o-clap" data-d="26" src="media/cut/clap.webp" alt="" width="707" height="749">
+    <img class="o o-mic" data-d="-18" src="media/cut/mic.webp" alt="" width="515" height="860">
+    <img class="o o-mega" data-d="34" src="media/cut/mega.webp" alt="" width="673" height="686">
+    <video class="clip hero-frame" src="media/reel.mp4" poster="media/reel.jpg" muted loop playsinline autoplay aria-label="A fast showreel of six editing styles"></video>
+  </div>
+  <h1 class="mag-title"><span>Edited</span> <small>by</small> <span>Saksham Pandey</span></h1>
 </section>
 
 <section class="same" id="same">
@@ -127,10 +139,36 @@ HOME = """
   </div>
 </section>
 
-<section class="brief">
-  <p class="statement">I don't have one look. I have six styles, and I pick the one that fits your content.</p>
-  <div class="brief-list">
-""" + "".join(f'    <a class="rise" style="--i:{i}" href="styles.html#{k}"><strong>{n}</strong><span>{f}</span></a>\n' for i, (k, n, f, _, _) in enumerate(STYLES)) + """  </div>
+<section class="tk">
+  <h2>Reels, trailers and YouTube, cut to the frame</h2>
+  <div class="tk-side rise">
+    <div class="faces">
+""" + "".join(f'      <a href="styles.html#{k}" aria-label="{n}"><img src="media/{k}-poster.jpg" alt="" width="96" height="96" loading="lazy"></a>\n' for k, n, _, _, _ in STYLES[:4]) + """    </div>
+    <p>Six editing styles, from talking-head reels to voice-only worlds, each recoloured for your brand.</p>
+    <div class="tiles"><img src="media/s4-poster.jpg" alt="A Still Life frame" loading="lazy"><img src="media/s2-poster.jpg" alt="A Yap frame" loading="lazy"></div>
+  </div>
+  <div class="ticket rise">
+    <p class="ticket-name">Your next video</p>
+    <dl>
+      <div><dt>Format</dt><dd>9:16, 16:9</dd></div>
+      <div><dt>Styles</dt><dd>Six</dd></div>
+      <div><dt>Editing since</dt><dd>2023</dd></div>
+      <div><dt>Based in</dt><dd>India</dd></div>
+    </dl>
+    <a class="btn btn-red" data-book href="contact.html">Book an edit</a>
+  </div>
+  <div class="tk-side tk-right rise">
+    <p>Captions in English and Roman-script Hinglish, motion graphics, and sound design on every edit.</p>
+    <a class="link" href="styles.html">See all six styles</a>
+    <div class="tiles"><img src="media/s5-poster.jpg" alt="A Live Edit frame" loading="lazy"><img src="media/s6-poster.jpg" alt="An Orbit frame" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="finale">
+  <h2>Saksham Pandey</h2>
+  <p>3+ years</p>
+  <p>India, remote</p>
+  <img class="o-camera" data-d="16" src="media/cut/camera.webp" alt="A vintage film camera on a tripod" width="418" height="930" loading="lazy">
 </section>
 """ + CTA
 

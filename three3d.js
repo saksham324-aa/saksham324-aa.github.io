@@ -7,7 +7,7 @@
   if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) return;
   document.documentElement.classList.add('has-3d');
 
-  const BG = 0xe2e2e2, INK = 0x7d0c14, DARK = 0x1a0709;
+  const BG = 0xffffff, INK = 0x7d0c14, DARK = 0x1a0709;
   let scrollV = 0, lastY = scrollY, mx = 0, my = 0;
   addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
 
@@ -34,6 +34,7 @@
 
   /* 1. hero: the showreel on a real slab that tilts with the pointer and turns with the scroll */
   const heroVid = document.querySelector('.hero-frame');
+  const objs = [...document.querySelectorAll('[data-d]')];
   if (heroVid) {
     const box = document.createElement('div');
     box.className = 'hero-3d';
@@ -55,6 +56,7 @@
         ry += (ty - ry) * Math.min(1, dt * 6); rx += (tx - rx) * Math.min(1, dt * 6);
         slab.rotation.set(rx, ry, 0);
         slab.position.y = Math.sin(t * .8) * .006;
+        objs.forEach(o => { const d = +o.dataset.d; o.style.transform = `translate(${mx * d}px,${my * d - s * d * 2.4}px)`; });
       };
     });
   }
@@ -138,7 +140,7 @@
       }
       const hole = new T.Path(); hole.absarc(0, 0, .09, 0, Math.PI * 2, true); disc.holes.push(hole);
       const flange = new T.ExtrudeGeometry(disc, { depth: .05, bevelEnabled: true, bevelSize: .012, bevelThickness: .012, bevelSegments: 2, curveSegments: 48 });
-      const steel = new T.MeshStandardMaterial({ color: 0xd2d2d2, metalness: .62, roughness: .38 });
+      const steel = new T.MeshStandardMaterial({ color: 0xc8c8c8, metalness: .62, roughness: .38 });
       [-.2, .15].forEach(z => { const f = new T.Mesh(flange, steel); f.position.z = z; reel.add(f); });
       const film = new T.Mesh(new T.CylinderGeometry(1.02, 1.02, .34, 72), new T.MeshStandardMaterial({ color: DARK, roughness: .38, metalness: .2 }));
       film.rotation.x = Math.PI / 2; reel.add(film);
