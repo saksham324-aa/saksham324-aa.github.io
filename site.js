@@ -74,6 +74,21 @@ const seen = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .1 });
 $$('video[loop]').forEach(v => seen.observe(v));
 
+/* the latest edit: it plays muted while on screen (the loop observer above); the button, or a tap on the video, turns sound on and off */
+(() => {
+  const v = $('#prVideo'), b = $('#prSound');
+  if (!v || !b) return;
+  const label = $('span', b);
+  b.addEventListener('click', () => {
+    const on = v.muted;
+    v.muted = !on;
+    b.setAttribute('aria-pressed', String(on));
+    label.textContent = on ? 'Sound on' : 'Tap for sound';
+    if (on) v.play().catch(() => {});
+  });
+  v.addEventListener('click', () => b.click());
+})();
+
 /* player: the clip with sound */
 const dlg = $('#player'), pv = $('video', dlg);
 $$('[data-play]').forEach(b => b.addEventListener('click', () => {
@@ -93,7 +108,12 @@ dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     live: 'Motion graphics act out the line while you explain it.',
     still: 'No camera at all. Just the voice and a world built around it.',
   };
-  const vids = $$('.same-frame video'), btns = $$('.pick button'), note = $('#sameNote'), sound = $('#sound');
+  const QUOTES = {  // Margin Notes and Live Edit share Sunny's line; Still Life is the bank-fraud reel
+    margin: '“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”',
+    live: '“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”',
+    still: '“Bas ek OTP, aur aapka poora account khaali.”',
+  };
+  const vids = $$('.same-frame video'), btns = $$('.pick button'), note = $('#sameNote'), quote = $('#sameQuote'), sound = $('#sound');
   const keys = ['margin', 'live', 'still'];
   let k = 'margin', muted = true, visible = false;
   const cur = () => vids.find(v => v.dataset.k === k);
@@ -108,6 +128,7 @@ dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     to.classList.add('on'); from.classList.remove('on'); from.pause(); from.muted = true;
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
     note.textContent = NOTES[k];
+    quote.textContent = QUOTES[k];
   }
   btns.forEach(b => b.addEventListener('click', () => go(b.dataset.k)));
   sound.addEventListener('click', () => {

@@ -2,12 +2,12 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "32"  # bump to bust the browser cache after changing css/js
+V = "34"  # bump to bust the browser cache after changing css/js
 
 REELS = [
     ("s1", "Margin Notes", "Talking-head reel", False),
     ("s2", "Yap", "Kinetic-type reel", False),
-    ("s3", "Trailer", "16:9 launch trailer", True),
+    ("s3", "Trailer", "Podcast trailer, 16:9", True),
     ("s4", "Still Life", "Voice only, every frame built", False),
     ("s5", "Live Edit", "70% motion graphics", False),
     ("s6", "Orbit", "One seated shot", False),
@@ -37,18 +37,33 @@ BODY = f"""
 </section>
 
 <section class="work" id="videos">
+  <div class="feature" id="latest">
+    <div class="feature-text">
+      <p class="eyebrow">Latest edit · Margin Notes</p>
+      <h2>Free PR box? It's income.</h2>
+      <p class="note">A 2:20 raw cut to 69 seconds for @earlyest.in: retakes out, every caption on its word, a graphic on every point and three full-screen scenes.</p>
+    </div>
+    <div class="feature-frame">
+      <video id="prVideo" src="media/prbox-full.mp4" poster="media/prbox-poster.jpg" muted loop playsinline preload="none" aria-label="The Free PR box reel, edited in Margin Notes"></video>
+      <button type="button" class="sound-btn" id="prSound" aria-pressed="false">
+        <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
+        <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <span>Tap for sound</span>
+      </button>
+    </div>
+  </div>
   <div class="same" id="same">
     <div class="same-stage">
       <div class="same-text">
-        <h2>Same line. Three edits.</h2>
-        <p class="quote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
+        <h2>Three edits.</h2>
+        <p class="quote" id="sameQuote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
         <p class="note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
         <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
       </div>
       <div class="same-frame">
         <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
         <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
-        <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="The line edited as Still Life"></video>
+        <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="A bank-fraud reel edited as Still Life"></video>
       </div>
       <div class="pick" role="group" aria-label="Choose an edit">
         <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
@@ -70,7 +85,7 @@ BODY = f"""
   <h2>Your turn.</h2>
   <a class="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
   <div class="ways" id="ways"></div>
-  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box reel edited for @earlyest.in. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MeijstroAudio, Melloja, Metzik, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
 </section>"""
 
 PAGE = f"""<!doctype html>
@@ -80,6 +95,9 @@ PAGE = f"""<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Saksham Pandey, video editor</title>
 <meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="icon" href="favicon.svg?v={V}" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png?v={V}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v={V}">
 <link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
@@ -87,7 +105,7 @@ PAGE = f"""<!doctype html>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
-  <a class="mark" href="#hook">Saksham Pandey</a>
+  <a class="mark" href="#hook"><span class="logo" aria-hidden="true">S</span>Saksham Pandey</a>
   <nav aria-label="Main"><a href="#info">About</a><a href="#videos">Videos</a><a href="#end">Contact</a></nav>
 </header>
 <main id="main">

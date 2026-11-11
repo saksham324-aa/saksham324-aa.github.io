@@ -5,14 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Saksham Pandey, video editor</title>
 <meta name="description" content="Saksham Pandey edits reels, trailers and YouTube videos for creators and brands. 3+ years, six editing styles.">
+<link rel="icon" href="favicon.svg?v=34" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png?v=34" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=34">
 <link rel="preload" href="fonts/BricolageGrotesque.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="site.css?v=32">
+<link rel="stylesheet" href="site.css?v=34">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
-  <a class="mark" href="#hook">Saksham Pandey</a>
+  <a class="mark" href="#hook"><span class="logo" aria-hidden="true">S</span>Saksham Pandey</a>
   <nav aria-label="Main"><a href="#info">About</a><a href="#videos">Videos</a><a href="#end">Contact</a></nav>
 </header>
 <main id="main">
@@ -34,18 +37,33 @@
 </section>
 
 <section class="work" id="videos">
+  <div class="feature" id="latest">
+    <div class="feature-text">
+      <p class="eyebrow">Latest edit · Margin Notes</p>
+      <h2>Free PR box? It's income.</h2>
+      <p class="note">A 2:20 raw cut to 69 seconds for @earlyest.in: retakes out, every caption on its word, a graphic on every point and three full-screen scenes.</p>
+    </div>
+    <div class="feature-frame">
+      <video id="prVideo" src="media/prbox-full.mp4" poster="media/prbox-poster.jpg" muted loop playsinline preload="none" aria-label="The Free PR box reel, edited in Margin Notes"></video>
+      <button type="button" class="sound-btn" id="prSound" aria-pressed="false">
+        <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
+        <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <span>Tap for sound</span>
+      </button>
+    </div>
+  </div>
   <div class="same" id="same">
     <div class="same-stage">
       <div class="same-text">
-        <h2>Same line. Three edits.</h2>
-        <p class="quote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
+        <h2>Three edits.</h2>
+        <p class="quote" id="sameQuote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
         <p class="note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
         <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
       </div>
       <div class="same-frame">
         <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
         <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
-        <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="The line edited as Still Life"></video>
+        <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="A bank-fraud reel edited as Still Life"></video>
       </div>
       <div class="pick" role="group" aria-label="Choose an edit">
         <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
@@ -68,7 +86,7 @@
       </button>
       <button type="button" class="reel wide" data-play="s3" data-title="Trailer" aria-label="Watch Trailer with sound">
         <video src="media/s3-loop.mp4" poster="media/s3-poster.jpg" muted loop playsinline preload="none"></video>
-        <span><strong>Trailer</strong> 16:9 launch trailer</span>
+        <span><strong>Trailer</strong> Podcast trailer, 16:9</span>
       </button>
       <button type="button" class="reel" data-play="s4" data-title="Still Life" aria-label="Watch Still Life with sound">
         <video src="media/s4-loop.mp4" poster="media/s4-poster.jpg" muted loop playsinline preload="none"></video>
@@ -91,7 +109,7 @@
   <h2>Your turn.</h2>
   <a class="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
   <div class="ways" id="ways"></div>
-  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY).</p>
+  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box reel edited for @earlyest.in. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MeijstroAudio, Melloja, Metzik, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
 </section>
 </main>
 <div class="feed" id="feed" aria-hidden="true"></div>
@@ -99,7 +117,7 @@
   <form method="dialog"><button class="btn" value="close">Close</button></form>
   <video controls playsinline></video>
 </dialog>
-<script src="config.js?v=32"></script>
-<script src="site.js?v=32"></script>
+<script src="config.js?v=34"></script>
+<script src="site.js?v=34"></script>
 </body>
 </html>
