@@ -131,12 +131,14 @@ dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     quote.textContent = QUOTES[k];
   }
   btns.forEach(b => b.addEventListener('click', () => go(b.dataset.k)));
+  const soundLabel = $('span', sound);
   sound.addEventListener('click', () => {
     muted = !muted; cur().muted = muted;
-    sound.textContent = muted ? 'Turn sound on' : 'Turn sound off';
+    soundLabel.textContent = muted ? 'Tap for sound' : 'Sound on';
     sound.setAttribute('aria-pressed', String(!muted));
     if (visible) cur().play().catch(() => {});
   });
+  vids.forEach(v => v.addEventListener('click', () => sound.click()));  // a tap on the video works too
   vids.forEach(v => v.addEventListener('ended', () => {
     if (v.dataset.k !== k) return; v.currentTime = 0; if (visible) v.play().catch(() => {});
   }));

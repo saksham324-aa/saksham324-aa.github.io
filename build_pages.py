@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "34"  # bump to bust the browser cache after changing css/js
+V = "35"  # bump to bust the browser cache after changing css/js
 
 REELS = [
     ("s1", "Margin Notes", "Talking-head reel", False),
@@ -13,10 +13,25 @@ REELS = [
     ("s6", "Orbit", "One seated shot", False),
 ]
 
+SPK = '<path d="M4 9h4l5-4v14l-5-4H4z"/>'
+SVG = '<svg{c} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+SPK_OFF = SVG.format(c=' class="off"') + SPK + '<path d="m17 9 5 6m0-6-5 6"/></svg>'
+SPK_ON = SVG.format(c=' class="on"') + SPK + '<path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>'
+SPK_PLAY = SVG.format(c="") + SPK + '<path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>'
+
+
+def sound_btn(i):
+    """The yellow on-video toggle: muted until tapped (site.js wires it)."""
+    return f'<button type="button" class="sound-btn" id="{i}" aria-pressed="false">{SPK_OFF}{SPK_ON}<span>Tap for sound</span></button>'
+
+
 reels = "".join(f"""
       <button type="button" class="reel{' wide' if w else ''}" data-play="{k}" data-title="{n}" aria-label="Watch {n} with sound">
-        <video src="media/{k}-loop.mp4" poster="media/{k}-poster.jpg" muted loop playsinline preload="none"></video>
-        <span><strong>{n}</strong> {d}</span>
+        <span class="reel-media">
+          <video src="media/{k}-loop.mp4" poster="media/{k}-poster.jpg" muted loop playsinline preload="none"></video>
+          <span class="sound-pill" aria-hidden="true">{SPK_PLAY}<span>Watch with sound</span></span>
+        </span>
+        <span class="reel-cap"><strong>{n}</strong> {d}</span>
       </button>""" for k, n, d, w in REELS)
 
 BODY = f"""
@@ -45,11 +60,7 @@ BODY = f"""
     </div>
     <div class="feature-frame">
       <video id="prVideo" src="media/prbox-full.mp4" poster="media/prbox-poster.jpg" muted loop playsinline preload="none" aria-label="The Free PR box reel, edited in Margin Notes"></video>
-      <button type="button" class="sound-btn" id="prSound" aria-pressed="false">
-        <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
-        <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>
-        <span>Tap for sound</span>
-      </button>
+      {sound_btn("prSound")}
     </div>
   </div>
   <div class="same" id="same">
@@ -58,12 +69,12 @@ BODY = f"""
         <h2>Three edits.</h2>
         <p class="quote" id="sameQuote">“Toh aakhir ye 90 din tak hamara paisa ghoom kahan raha?”</p>
         <p class="note" id="sameNote">Your face carries it, and a clean card explains the money.</p>
-        <button type="button" class="link" id="sound" aria-pressed="false">Turn sound on</button>
       </div>
       <div class="same-frame">
         <video data-k="margin" src="media/same-margin.mp4" poster="media/same-margin.jpg" muted playsinline preload="none" aria-label="The line edited as Margin Notes"></video>
         <video data-k="live" src="media/same-live.mp4" poster="media/same-live.jpg" muted playsinline preload="none" aria-label="The line edited as Live Edit"></video>
         <video data-k="still" src="media/same-still.mp4" poster="media/same-still.jpg" muted playsinline preload="none" aria-label="A bank-fraud reel edited as Still Life"></video>
+        {sound_btn("sound")}
       </div>
       <div class="pick" role="group" aria-label="Choose an edit">
         <button type="button" data-k="margin" aria-pressed="true">Margin Notes</button>
