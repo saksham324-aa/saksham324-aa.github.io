@@ -53,15 +53,17 @@ lit.innerHTML = words.map(w => `<span>${w}</span>`).join(' ');
 const spans = $$('span', lit);
 
 /* the reels move past like a timeline */
-const strip = $('#strip'), track = $('#track');
+const strips = $$('.strip').map(s => [s, $('.track', s)]);  // Latest work + Six styles
 
 const prog = el => { const r = el.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / (r.height - innerHeight))); };
 function onScroll() {
   if (calm) { spans.forEach(s => s.classList.add('on')); return; }
   const n = Math.round(prog(info) * 1.15 * spans.length);
   spans.forEach((s, i) => s.classList.toggle('on', i < n));
-  if (innerWidth > 900) track.style.transform = `translateX(${-prog(strip) * Math.max(0, track.scrollWidth - innerWidth)}px)`;
-  else track.style.transform = '';
+  strips.forEach(([strip, track]) => {
+    if (innerWidth > 900) track.style.transform = `translateX(${-prog(strip) * Math.max(0, track.scrollWidth - innerWidth)}px)`;
+    else track.style.transform = '';
+  });
 }
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);

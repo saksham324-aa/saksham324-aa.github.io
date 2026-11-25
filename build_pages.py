@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "35"  # bump to bust the browser cache after changing css/js
+V = "36"  # bump to bust the browser cache after changing css/js
 
 REELS = [
     ("s1", "Margin Notes", "Talking-head reel", False),
@@ -11,6 +11,14 @@ REELS = [
     ("s4", "Still Life", "Voice only, every frame built", False),
     ("s5", "Live Edit", "70% motion graphics", False),
     ("s6", "Orbit", "One seated shot", False),
+]
+
+LATEST = [  # 2026-11-25: the newest edits, newest first (the Wolves International / Rishika trials stay off the site)
+    ("l1", "Team next goal", "Big type + cinematic scenes"),
+    ("l2", "Free PR box, void edit", "One camera through a white void"),
+    ("l3", "Brand deal payment delay", "Flowing full-screen graphics"),
+    ("l4", "100 Pedras Rd", "Property ad from 39 listing photos"),
+    ("l5", "Free PR box", "Margin Notes, 69 seconds"),
 ]
 
 SPK = '<path d="M4 9h4l5-4v14l-5-4H4z"/>'
@@ -25,14 +33,19 @@ def sound_btn(i):
     return f'<button type="button" class="sound-btn" id="{i}" aria-pressed="false">{SPK_OFF}{SPK_ON}<span>Tap for sound</span></button>'
 
 
-reels = "".join(f"""
+def cards(items):
+    return "".join(f"""
       <button type="button" class="reel{' wide' if w else ''}" data-play="{k}" data-title="{n}" aria-label="Watch {n} with sound">
         <span class="reel-media">
           <video src="media/{k}-loop.mp4" poster="media/{k}-poster.jpg" muted loop playsinline preload="none"></video>
           <span class="sound-pill" aria-hidden="true">{SPK_PLAY}<span>Watch with sound</span></span>
         </span>
         <span class="reel-cap"><strong>{n}</strong> {d}</span>
-      </button>""" for k, n, d, w in REELS)
+      </button>""" for k, n, d, w in items)
+
+
+reels = cards(REELS)
+latest = cards([(k, n, d, False) for k, n, d in LATEST])
 
 BODY = f"""
 <section class="hook" id="hook">
@@ -54,13 +67,20 @@ BODY = f"""
 <section class="work" id="videos">
   <div class="feature" id="latest">
     <div class="feature-text">
-      <p class="eyebrow">Latest edit · Margin Notes</p>
-      <h2>Free PR box? It's income.</h2>
-      <p class="note">A 2:20 raw cut to 69 seconds for @earlyest.in: retakes out, every caption on its word, a graphic on every point and three full-screen scenes.</p>
+      <p class="eyebrow">Latest edit · @earlyest.in</p>
+      <h2>1 reel = 18 hours.</h2>
+      <p class="note">A 2:09 raw cut to 87 seconds: retakes out, every caption on its word, and one full-screen world the camera flies through, a screen for every step of the work.</p>
     </div>
     <div class="feature-frame">
-      <video id="prVideo" src="media/prbox-full.mp4" poster="media/prbox-poster.jpg" muted loop playsinline preload="none" aria-label="The Free PR box reel, edited in Margin Notes"></video>
+      <video id="prVideo" src="media/latest-full.mp4" poster="media/latest-poster.jpg" muted loop playsinline preload="none" aria-label="The 1 reel = 18 hours reel"></video>
       {sound_btn("prSound")}
+    </div>
+  </div>
+  <div class="strip" id="fresh">
+    <div class="strip-stage">
+      <h2>Latest work</h2>
+      <div class="track">{latest}
+      </div>
     </div>
   </div>
   <div class="same" id="same">
@@ -96,7 +116,7 @@ BODY = f"""
   <h2>Your turn.</h2>
   <a class="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
   <div class="ways" id="ways"></div>
-  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box reel edited for @earlyest.in. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MeijstroAudio, Melloja, Metzik, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
+  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box, 18 hours, Team next goal and Brand deal payment reels edited for @earlyest.in; Team next goal uses a clip from India Today / Aaj Tak's Master Class; 100 Pedras Rd uses the listing's own photos; stock footage from Pixabay. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): aj_heels, alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MattRuthSound, MeijstroAudio, Melloja, Metzik, nightcustard, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
 </section>"""
 
 PAGE = f"""<!doctype html>
