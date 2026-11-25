@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "37"  # bump to bust the browser cache after changing css/js
+V = "38"  # bump to bust the browser cache after changing css/js
 
 REELS = [
     ("s1", "Margin Notes", "Talking-head reel", False),
@@ -17,6 +17,7 @@ LATEST = [  # 2026-11-25: the newest edits, newest first (the Wolves Internation
     ("l2", "Free PR box, void edit", "One camera through a white void"),
     ("l3", "Brand deal payment delay", "Flowing full-screen graphics"),
     ("l5", "Free PR box", "Margin Notes, 69 seconds"),
+    ("s5", "Brand deal payment", "Live Edit, 70% motion graphics"),  # the user added it 2026-11-25 (same clip as the Six styles card)
 ]
 
 SPK = '<path d="M4 9h4l5-4v14l-5-4H4z"/>'

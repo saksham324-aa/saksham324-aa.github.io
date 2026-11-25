@@ -152,3 +152,14 @@ dialog video{max-height:calc(100svh - 72px);max-width:100vw;background:#000}
   .js .lit span{color:inherit}
   .track{width:auto;overflow-x:auto}
 }
+/* Latest work (2026-11-25): four cards, centred; on wide screens they are sized to fit side by side, so no scroll-driven sweep */
+#fresh .track>.reel:first-child{margin-left:auto}
+#fresh .track>.reel:last-child{margin-right:auto}
+@media (min-width:901px){
+  #fresh{height:auto}
+  #fresh .strip-stage{position:static;height:auto;min-height:100svh;align-items:center}
+  #fresh h2{align-self:stretch;text-align:center}
+  #fresh .track{width:100%;justify-content:center}
+  #fresh .track>.reel{margin:0}
+  #fresh .reel video{height:min(64svh,600px,calc((100vw - 2 * var(--edge) - 3 * 20px) / 4 * 16 / 9))}
+}
