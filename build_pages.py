@@ -2,7 +2,7 @@
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-V = "36"  # bump to bust the browser cache after changing css/js
+V = "37"  # bump to bust the browser cache after changing css/js
 
 REELS = [
     ("s1", "Margin Notes", "Talking-head reel", False),
@@ -14,10 +14,8 @@ REELS = [
 ]
 
 LATEST = [  # 2026-11-25: the newest edits, newest first (the Wolves International / Rishika trials stay off the site)
-    ("l1", "Team next goal", "Big type + cinematic scenes"),
     ("l2", "Free PR box, void edit", "One camera through a white void"),
     ("l3", "Brand deal payment delay", "Flowing full-screen graphics"),
-    ("l4", "100 Pedras Rd", "Property ad from 39 listing photos"),
     ("l5", "Free PR box", "Margin Notes, 69 seconds"),
 ]
 
@@ -116,7 +114,7 @@ BODY = f"""
   <h2>Your turn.</h2>
   <a class="mail" href="mailto:sakshammpandey.9@gmail.com?subject=Video%20edit%20enquiry">sakshammpandey.9@gmail.com</a>
   <div class="ways" id="ways"></div>
-  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box, 18 hours, Team next goal and Brand deal payment reels edited for @earlyest.in; Team next goal uses a clip from India Today / Aaj Tak's Master Class; 100 Pedras Rd uses the listing's own photos; stock footage from Pixabay. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): aj_heels, alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MattRuthSound, MeijstroAudio, Melloja, Metzik, nightcustard, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
+  <p class="small">© 2026 Saksham Pandey. Orbit sample footage: <a href="https://www.youtube.com/watch?v=D_UU8Mty6u8" rel="noopener">Fireside Chat, Resilience Conference</a> (CC BY). Podcast trailer: footage from Young and Profiting (YAP Media) with Jim Kwik. Free PR box, 18 hours and Brand deal payment reels edited for @earlyest.in; stock photos from Pixabay. Sound effects from <a href="https://freesound.org" rel="noopener">Freesound</a> (CC BY): aj_heels, alexkandrell, AndreAngelo, Artninja, Coolshows101sound, Department64, designerschoice, Eelke, F.M.Audio, kwahmah_02, MattRuthSound, MeijstroAudio, Melloja, Metzik, nightcustard, original_sound, pfranzen, ross_sinc, shall555, SkyernAklea, sound.variant, subquire, SunnySideSound, Tapepusher, theplax, Vilkas_Sound, waveplaySFX, ztrees1.</p>
 </section>"""
 
 PAGE = f"""<!doctype html>
